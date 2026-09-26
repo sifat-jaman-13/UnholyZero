@@ -17,17 +17,40 @@ npm run build
 
 The generated site is in `dist/`.
 
-## Appwrite Sites
+## Deployment
 
-Connect this repository to Appwrite Sites with:
+GitHub repository: <https://github.com/sifat-jaman-13/UnholyZero>
+
+### Appwrite Sites
+
+The Appwrite project contains the `UnholyZero` static Astro Site:
 
 ```text
-Framework: Astro (or Other)
+Install command: npm ci
 Build command: npm run build
 Output directory: dist
+Build runtime: node-22
 ```
 
-After the first successful deployment, add `unholyzero.tech` as the custom domain in Appwrite Sites and follow the DNS verification instructions in Cloudflare. Keep Cloudflare proxying disabled until Appwrite finishes domain verification if the console requires direct DNS resolution.
+The first deployment is active and ready. Subsequent deployments can be uploaded from the repository with the Appwrite CLI after selecting the `UnholyZero` project.
+
+### Cloudflare Pages
+
+The production Pages project is `unholyzero`, with the `main` branch deployed at:
+
+- <https://unholyzero.pages.dev>
+- <https://e1d33c0a.unholyzero.pages.dev>
+
+The custom domain `unholyzero.tech` is attached to the Pages project and is awaiting DNS verification. Add this record in the `unholyzero.tech` Cloudflare zone:
+
+```text
+Type: CNAME
+Name: @
+Target: unholyzero.pages.dev
+Proxy status: DNS only during verification
+```
+
+After Cloudflare verifies the domain and issues the certificate, proxying can be enabled if desired.
 
 ## Publishing
 
