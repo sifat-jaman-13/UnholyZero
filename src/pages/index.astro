@@ -23,7 +23,7 @@ const posts = (await getCollection("posts", ({ data }) => !data.draft))
       {posts.map((post) => (
         <article class="post-card">
           <p class="post-date">{post.data.publishedAt.toLocaleDateString("en-US", { dateStyle: "medium" })}</p>
-          <h2><a href={`/posts/${post.slug}/`}>{post.data.title}</a></h2>
+          <h2><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
           <p>{post.data.description}</p>
           <div class="tags">{post.data.tags.map((tag) => <span>#{tag}</span>)}</div>
         </article>
