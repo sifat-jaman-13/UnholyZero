@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <article class="article">
+    <a class="back" href="/#latest">← All articles</a>
+    <p class="eyebrow">Article · {post.data.publishedAt.toLocaleDateString("en-US", { dateStyle: "medium" })}</p>
+    <h1>{post.data.title}</h1>
+    <p class="intro">{post.data.description}</p>
+    <div class="content"><Content /></div>
+  </article>
+</Layout>
+
+<style>
+  .article { max-width: 760px; padding: 80px 0 120px; }
+  .back { color: #969188; display: inline-block; margin-bottom: 70px; }
+  h1 { margin: 18px 0; font-size: clamp(2.8rem, 8vw, 5.4rem); line-height: 0.98; letter-spacing: -0.07em; }
+  .intro { color: #b7b1a6; font-size: 1.25rem; line-height: 1.6; }
+  .content { margin-top: 52px; color: #d7d1c7; font-size: 1.08rem; line-height: 1.8; }
+  .content :global(h2) { margin-top: 2.5em; color: #f4f1ea; line-height: 1.2; }
+  .content :global(a) { color: #ffb86b; text-decoration: underline; text-underline-offset: 3px; }
+</style>

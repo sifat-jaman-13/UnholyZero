@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Privacy" description="UnholyZero privacy information.">
+  <article class="page">
+    <p class="eyebrow">Privacy</p>
+    <h1>Your data is not content.</h1>
+    <p>UnholyZero will use privacy-conscious analytics to understand aggregate traffic and improve the site. If advertising is enabled, Google and its partners may use cookies or similar technologies subject to your consent and their policies.</p>
+    <p>This page will be updated with the final analytics, advertising, cookie-consent, and contact details before monetization is enabled.</p>
+  </article>
+</Layout>
+
+<style>
+  .page { max-width: 700px; padding: 100px 0 140px; }
+  h1 { margin: 18px 0 28px; font-size: clamp(3rem, 8vw, 5.5rem); line-height: .98; letter-spacing: -.07em; }
+  .page p:not(.eyebrow) { color: #b7b1a6; font-size: 1.15rem; line-height: 1.8; }
+</style>

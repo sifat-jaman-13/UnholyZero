@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About" description="About UnholyZero and its editorial standards.">
+  <article class="page">
+    <p class="eyebrow">About UnholyZero</p>
+    <h1>Less content. More signal.</h1>
+    <p>UnholyZero is a technical blog for developers who want practical explanations, tested experiments, and honest trade-offs without the usual tutorial theatre.</p>
+    <p>AI helps with research and drafting. Editorial review, fact-checking, and the final decision to publish remain human responsibilities.</p>
+  </article>
+</Layout>
+
+<style>
+  .page { max-width: 700px; padding: 100px 0 140px; }
+  h1 { margin: 18px 0 28px; font-size: clamp(3rem, 8vw, 5.5rem); line-height: .98; letter-spacing: -.07em; }
+  .page p:not(.eyebrow) { color: #b7b1a6; font-size: 1.15rem; line-height: 1.8; }
+</style>

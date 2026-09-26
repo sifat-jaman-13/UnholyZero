@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<Layout title="Useful developer writing" description="Useful developer writing, practical AI experiments, and honest engineering lessons.">
+  <section class="hero">
+    <p class="eyebrow">A developer blog with standards</p>
+    <h1>Useful ideas.<br /><em>Unholy</em> honesty.</h1>
+    <p class="lede">Practical experiments, AI workflows, and engineering lessons for people who have already tried turning it off and on again.</p>
+    <a class="button" href="#latest">Read the latest</a>
+  </section>
+
+  <section id="latest" class="latest">
+    <div class="section-heading">
+      <p class="eyebrow">Latest articles</p>
+      <p>{posts.length} published {posts.length === 1 ? "article" : "articles"}</p>
+    </div>
+    <div class="post-list">
+      {posts.map((post) => (
+        <article class="post-card">
+          <p class="post-date">{post.data.publishedAt.toLocaleDateString("en-US", { dateStyle: "medium" })}</p>
+          <h2><a href={`/posts/${post.slug}/`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+          <div class="tags">{post.data.tags.map((tag) => <span>#{tag}</span>)}</div>
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { max-width: 780px; padding: 120px 0 140px; }
+  h1 { margin: 18px 0; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.94; letter-spacing: -0.075em; }
+  h1 em { color: #ffb86b; font-style: normal; }
+  .lede { max-width: 580px; margin: 26px 0 34px; color: #b7b1a6; font-size: 1.2rem; line-height: 1.65; }
+  .latest { border-top: 1px solid #2d2b27; padding: 40px 0 70px; }
+  .section-heading { display: flex; justify-content: space-between; color: #969188; font-size: 0.9rem; }
+  .section-heading p { margin: 0; }
+  .post-list { display: grid; gap: 1px; margin-top: 22px; background: #2d2b27; }
+  .post-card { background: #10100f; padding: 28px; }
+  .post-card h2 { margin: 6px 0 10px; font-size: clamp(1.5rem, 4vw, 2.1rem); letter-spacing: -0.04em; }
+  .post-card > p:not(.post-date) { max-width: 680px; color: #b7b1a6; line-height: 1.6; }
+  .post-date { color: #ffb86b; font-size: 0.8rem; text-transform: uppercase; }
+  .tags { display: flex; gap: 12px; color: #969188; font-size: 0.8rem; }
+</style>
