@@ -57,6 +57,6 @@ $env:AGENT_DRY_RUN="true"
 npm run agent:run
 ```
 
-The agent fetches only explicitly allowlisted sources, requires inline citations, rejects malformed, promotional, or unsafe output, and produces draft-only Astro posts. Defaults are deliberately non-destructive: dry-run is on and pull-request creation is off.
+The agent fetches only explicitly allowlisted sources, requires inline citations, and rejects malformed, promotional, or unsafe output before publishing. Its checked articles are public by default; it does not expose Ollama or automatically alter domains.
 
-To write a local draft after reviewing a dry-run result, set `AGENT_DRY_RUN=false`. To create a review pull request as well, set `AGENT_CREATE_PR=true`; it requires a clean Git worktree and GitHub CLI authentication. It never merges or deploys automatically.
+Set `AGENT_DRY_RUN=true` when you want a no-write preview. Set `AGENT_CREATE_PR=false` when you want the agent to write locally without opening a pull request. GitHub CLI authentication is required for pull-request creation.

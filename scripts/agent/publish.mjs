@@ -6,7 +6,7 @@ const root = resolve(import.meta.dirname, "../..");
 const quote = (value) => JSON.stringify(String(value));
 
 export function renderPost(article, sources, runId) {
-  return `---\ntitle: ${quote(article.title)}\ndescription: ${quote(article.description)}\npublishedAt: ${new Date().toISOString().slice(0, 10)}\ntags:\n${article.tags.map((tag) => `  - ${quote(tag)}`).join("\n")}\ndraft: true\nagentRunId: ${quote(runId)}\nsources:\n${sources.map((source) => `  - title: ${quote(source.title)}\n    url: ${quote(source.url)}`).join("\n")}\n---\n\n${article.body.trim()}\n`;
+  return `---\ntitle: ${quote(article.title)}\ndescription: ${quote(article.description)}\npublishedAt: ${new Date().toISOString().slice(0, 10)}\ntags:\n${article.tags.map((tag) => `  - ${quote(tag)}`).join("\n")}\ndraft: false\nagentRunId: ${quote(runId)}\nsources:\n${sources.map((source) => `  - title: ${quote(source.title)}\n    url: ${quote(source.url)}`).join("\n")}\n---\n\n${article.body.trim()}\n`;
 }
 
 function run(command, args) { const result = spawnSync(command, args, { cwd: root, encoding: "utf8" }); if (result.status !== 0) throw new Error(`${command} ${args.join(" ")} failed: ${result.stderr || result.stdout}`); }

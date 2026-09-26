@@ -8,7 +8,7 @@ tags:
   - "retry logic"
   - "resilience"
   - "client error handling"
-draft: true
+draft: false
 agentRunId: "2026-09-26T20-46-07-451Z"
 sources:
   - title: "developer.mozilla.org"

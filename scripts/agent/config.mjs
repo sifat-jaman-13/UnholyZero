@@ -32,7 +32,7 @@ export function loadConfig() {
     topic: process.env.AGENT_TOPIC || "",
     sourceUrls: csv("AGENT_SOURCE_URLS", true),
     allowedDomains: csv("AGENT_ALLOWED_DOMAINS", true).map((domain) => domain.toLowerCase()),
-    dryRun: process.env.AGENT_DRY_RUN === undefined ? true : truthy(process.env.AGENT_DRY_RUN),
-    createPr: truthy(process.env.AGENT_CREATE_PR),
+    dryRun: process.env.AGENT_DRY_RUN === undefined ? false : truthy(process.env.AGENT_DRY_RUN),
+    createPr: process.env.AGENT_CREATE_PR === undefined ? true : truthy(process.env.AGENT_CREATE_PR),
   };
 }
