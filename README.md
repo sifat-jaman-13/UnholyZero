@@ -60,3 +60,8 @@ npm run agent:run
 The agent fetches only explicitly allowlisted sources, requires inline citations, and rejects malformed, promotional, or unsafe output before publishing. Its checked articles are public by default; it does not expose Ollama or automatically alter domains.
 
 Set `AGENT_DRY_RUN=true` when you want a no-write preview. Set `AGENT_CREATE_PR=false` when you want the agent to write locally without opening a pull request. GitHub CLI authentication is required for pull-request creation.
+
+
+## License
+
+Original project code and content are licensed under the [GNU General Public License v3.0 only](LICENSE) (GPL-3.0-only). Third-party components and dependencies remain under their respective licenses.
