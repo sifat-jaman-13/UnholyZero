@@ -64,4 +64,4 @@ Set `AGENT_DRY_RUN=true` when you want a no-write preview. Set `AGENT_CREATE_PR=
 
 ## License
 
-Original project code and content are licensed under the [GNU General Public License v3.0 only](LICENSE) (GPL-3.0-only). Third-party components and dependencies remain under their respective licenses.
+Original project code and content are available under a [proprietary non-commercial use licence](LICENSE). Individual personal and educational use is permitted; company, organisational, and commercial use requires prior written permission. Third-party components and dependencies remain under their respective licences.
